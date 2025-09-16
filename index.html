@@ -83,26 +83,6 @@
         font-weight: bold;
       }
 
-      /* Hero Section */
-      .hero {
-        display: flex;
-        height: 100vh;
-        width: 100%;
-        background-color: var(--primary-bg);
-      }
-
-      .hero-video {
-        flex: 1;
-        background: #000;
-        position: relative;
-      }
-
-      .hero-video video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
       .hero-content {
         flex: 1;
         display: flex;
@@ -414,16 +394,11 @@
       /* Responsive Design */
       @media (max-width: 992px) {
         .hero {
-          flex-direction: column;
           height: auto;
         }
         .hero-content {
           padding: 4rem 2rem;
           text-align: center;
-        }
-        .hero-video {
-          height: 50vh;
-          min-height: 300px;
         }
         h1 {
           font-size: 2.5rem;
@@ -432,17 +407,26 @@
           font-size: 2rem;
         }
       }
+      
+      /* ===================================== */
+      /* ========= SEÇÃO MODIFICADA ========== */
+      /* ===================================== */
 
-      /* Hero Section - MODIFICADO */
+      /* Hero Section - MODIFICADO COM IMAGEM */
       .hero {
-        position: relative; /* Essencial para posicionar os filhos sobre ele */
+        position: relative; 
         height: 100vh;
         width: 100%;
-        display: flex; /* Mantemos o flex para centralizar o conteúdo facilmente */
+        display: flex; 
         justify-content: center;
         align-items: center;
-        text-align: center; /* Centraliza o texto dentro do hero-content */
-        overflow: hidden; /* Garante que o vídeo não "vaze" para fora da seção */
+        text-align: center; 
+        
+        /* Adicione as linhas abaixo */
+        background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop'); /* <-- TROQUE PELO CAMINHO DA SUA IMAGEM */
+        background-size: cover; /* Faz a imagem cobrir todo o espaço */
+        background-position: center center; /* Centraliza a imagem */
+        background-repeat: no-repeat; /* Evita que a imagem se repita */
       }
 
       /* Adiciona uma sobreposição escura para melhorar a legibilidade do texto */
@@ -458,69 +442,22 @@
           13,
           13,
           0.8
-        ); /* Fundo preto com 60% de opacidade */
-        z-index: 1; /* Fica acima do vídeo, mas abaixo do texto */
+        ); /* Fundo preto com 80% de opacidade */
+        z-index: 1; /* Fica acima da imagem, mas abaixo do texto */
       }
-
-      /* NOVA REGRA para o vídeo de fundo */
-      #hero-background-video {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); /* Centraliza o vídeo perfeitamente */
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: 0; /* Coloca o vídeo atrás de tudo */
-        object-fit: cover; /* Faz o vídeo cobrir todo o espaço sem distorcer */
-      }
-
+      
       /* Hero Content - MODIFICADO */
       .hero-content {
         position: relative; /* Necessário para que o z-index funcione */
-        z-index: 2; /* Garante que o conteúdo fique na frente da sobreposição e do vídeo */
+        z-index: 2; /* Garante que o conteúdo fique na frente de tudo */
         flex: 0 1 900px; /* Limita a largura máxima do conteúdo para melhor leitura */
         padding: 2rem;
       }
-
-      /* NOVO: Wrapper para o Iframe */
-      .video-background-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        overflow: hidden; /* Esconde as partes do iframe que sobram */
-      }
-
-      /* NOVO: Estilo para o Iframe se comportar como fundo */
-      #hero-background-youtube {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 177.77vh; /* Truque para manter a proporção 16:9 (100vh * 1.777) */
-        min-width: 100vw; /* Garante que cubra a largura toda */
-        height: 56.25vw; /* Truque para manter a proporção 16:9 (100vw * 0.5625) */
-        min-height: 100vh; /* Garante que cubra a altura toda */
-        pointer-events: none; /* Impede que o usuário clique no iframe */
-      }
+      
     </style>
   </head>
   <body>
     <section class="hero">
-      <div class="video-background-wrapper">
-        <iframe
-          id="hero-background-youtube"
-          src="https://www.youtube.com/embed/wytU6ShEzt0?&autoplay=1&mute=1&loop=1&playlist=wytU6ShEzt0&controls=0&showinfo=0&autohide=1&modestbranding=1&rel=0"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        ></iframe>
-      </div>
-
       <div class="hero-content">
         <h1>Imersão Prova Digital 360 para Advogados Criminalistas</h1>
         <p class="subheading">
