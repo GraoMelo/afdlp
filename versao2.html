@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imersão Prova Digital 360 - Para Advogados Criminalistas</title>
+    <style>
+        /* --- RESET BÁSICO E CONFIGURAÇÃO DE FONTES --- */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        /* Para usar a fonte Swis721 WGL4 BT, você precisa ter os arquivos dela.
+        
+        @font-face {
+            font-family: 'Swis721';
+            src: url('Swis721-WGL4-BT.woff2') format('woff2'),
+                 url('Swis721-WGL4-BT.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        */
+
+        :root {
+            --azul-principal: #3668b1;
+            --azul-destaque: #38bff0;
+            --cinza-texto: #504f4f;
+            --cinza-fundo: #ededed;
+            --branco: #ffffff;
+            --fonte-titulo: 'Swis721', 'Helvetica', 'Arial', sans-serif; /* Fallback para fontes seguras */
+            --fonte-corpo: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            color: var(--cinza-texto);
+            background-color: var(--branco);
+            line-height: 1.6;
+        }
+
+        /* --- ESTRUTURA E CONTAINERS --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            width: 100%;
+        }
+
+        .bg-gray {
+            background-color: var(--cinza-fundo);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--fonte-titulo);
+            color: var(--azul-principal);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BOTÕES (CTA) --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--azul-principal);
+            color: var(--branco);
+            font-family: var(--fonte-titulo);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            padding: 15px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #2a538c;
+            transform: translateY(-3px);
+        }
+
+        /* --- BARRA FIXA --- */
+        .fixed-cta-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(54, 104, 177, 0.95);
+            padding: 15px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .fixed-cta-bar p {
+            color: var(--branco);
+            margin: 0;
+            margin-right: 20px;
+            font-family: var(--fonte-titulo);
+            font-size: 1.1rem;
+        }
+        
+        .fixed-cta-bar .cta-button {
+             background-color: var(--azul-destaque);
+             color: var(--cinza-texto);
+             padding: 10px 25px;
+             font-size: 1rem;
+             box-shadow: none;
+        }
+        
+        .fixed-cta-bar .cta-button:hover {
+            background-color: var(--branco);
+        }
+
+        /* --- BLOCO 1: HERÓI --- */
+        .hero {
+            background-color: #f0f4f8; /* Um tom suave para não depender de imagem */
+            text-align: center;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-family: var(--fonte-corpo);
+            color: var(--cinza-texto);
+            font-size: 1.5rem;
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        
+        .hero .video-placeholder {
+            max-width: 800px;
+            width: 100%;
+            height: 450px;
+            background-color: var(--cinza-texto);
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .hero .hero-highlights {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            font-weight: 700;
+        }
+        
+        .hero .turma-info {
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        /* --- BLOCO 2: DOR (CARDS) - MODIFICADO --- */
+        .dor-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .dor-card {
+            background-color: var(--branco);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--azul-destaque);
+        }
+
+        .dor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .dor-card .card-icon {
+            font-size: 1.6rem;
+            color: var(--azul-principal);
+            margin-right: 15px;
+            line-height: 1.5;
+            font-weight: bold;
+        }
+
+        .dor-card p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* --- BLOCO 3: SOLUÇÃO (MÓDULOS) --- */
+        .modulos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .modulo-card {
+            background: var(--branco);
+            border: 1px solid #ddd;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .modulo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .modulo-card h4 {
+            font-size: 1.5rem;
+            color: var(--azul-principal);
+        }
+        
+        .modulo-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .modulo-card ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        
+        .modulo-card ul li {
+            margin-bottom: 10px;
+        }
+
+        .urgency-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .urgency-section p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--azul-principal);
+            margin-top: 15px;
+        }
+
+        /* --- BLOCO 4: PROFESSORES --- */
+        .professores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .professor-card {
+            text-align: center;
+        }
+        
+        .professor-card img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--azul-destaque);
+            margin-bottom: 20px;
+        }
+        
+        .professor-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .professor-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        
+        .professor-card li {
+             margin-bottom: 5px;
+        }
+        
+        /* --- BLOCO 5: PROVA SOCIAL --- */
+        .testimonial {
+            background-color: var(--cinza-fundo);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        
+        .testimonial img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            border: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial cite {
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .logos-scroll {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .logos-scroll p {
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .logos-placeholder {
+            width: 100%;
+            height: 50px;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-texto);
+        }
+
+        /* --- BLOCO 6: ENTREGÁVEIS --- */
+        .entregaveis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .entregavel-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .entregavel-item h4 {
+             font-size: 1.3rem;
+        }
+        
+        /* --- BLOCO NOVO: BÔNUS & DIFERENCIAIS --- */
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+        }
+
+        .bonus-item {
+            background-color: var(--branco);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--azul-destaque);
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .bonus-item h4 {
+            font-size: 1.4rem;
+        }
+        
+        /* --- BLOCO 7: CTA FINAL --- */
+        .cta-final .recap-list {
+            list-style: none;
+            padding: 0;
+            max-width: 700px;
+            margin: 30px auto;
+        }
+        
+        .cta-final .recap-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .cta-final .recap-list li::before {
+            content: '✅';
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .cta-final .disclaimer {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* --- BLOCO 8: FAQ --- */
+        .faq-item {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+        }
+        
+        .faq-item summary {
+            font-family: var(--fonte-titulo);
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq-item summary::after {
+            content: '+';
+            float: right;
+            font-size: 1.8rem;
+        }
+        
+        .faq-item[open] summary::after {
+            content: '-';
+        }
+        
+        .faq-item p {
+            margin-top: 15px;
+            padding-left: 10px;
+        }
+        
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--cinza-texto);
+            color: var(--branco);
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+            .hero h2 { font-size: 1.2rem; }
+            .hero .video-placeholder { height: 300px; }
+            
+            .bonus-grid { grid-template-columns: 1fr; }
+            
+            .fixed-cta-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .fixed-cta-bar p {
+                margin: 0 0 10px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container { padding: 40px 15px; }
+            h1 { font-size: 2.2rem; }
+            .hero h2 { font-size: 1rem; }
+            .hero .hero-highlights { flex-direction: column; gap: 15px; }
+            .cta-button { width: 100%; padding: 15px; font-size: 1rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Imersão Prova Digital 360</h1>
+            <h2>Cadeia de custódia, metadados e laudos. Atue com segurança na defesa de questões técnicas no processo penal.</h2>
+            
+            <div class="video-placeholder">
+                ▶ Vídeo do Leandro
+            </div>
+            
+            <div class="hero-highlights">
+                <span>✓ Casos reais</span>
+                <span>✓ Exercícios práticos</span>
+                <span>✓ Checklists e método testado</span>
+            </div>
+
+            <p class="turma-info">Vagas limitadas. Próxima turma em [Insira as Datas] em [Insira o Local]</p>
+
+            <a href="#inscricao" class="cta-button">Quero dominar provas digitais no processo penal</a>
+        </div>
+    </section>
+
+    <section id="para-quem" class="bg-gray">
+        <div class="container">
+            <h2>Esta imersão foi feita para você que...</h2>
+            <p style="text-align: center;">A Imersão Prova Digital 360 foi feita para transformar a carreira de quem passa por uma das seguintes situações:</p>
+            
+            <div class="dor-cards-grid">
+                <div class="dor-card">
+                    <div class="card-icon">✖</div>
+                    <p>Sente insegurança ao atuar em casos com provas digitais (smartphone, WhatsApp, e-mails, logs, mídias).</p>
+                </div>
+                <div class="dor-card">
+                    <div class="card-icon">✖</div>
+                    <p>Trava ao analisar cadeia de custódia: não sabe identificar quebras ou pedir a verificação de integridade.</p>
+                </div>
+                <div class="dor-card">
+                    <div class="card-icon">✖</div>
+                    <p>Fica em dúvida sobre a legalidade da coleta/apreensão de dados (acesso a celular, nuvem, backups).</p>
+                </div>
+                <div class="dor-card">
+                    <div class="card-icon">✖</div>
+                    <p>Não sabe o que solicitar: espelhamento forense, laudos, bases brutas, relatórios de extração, etc.</p>
+                </div>
+                <div class="dor-card">
+                    <div class="card-icon">✖</div>
+                    <p>Tem dificuldade para impugnar laudos ou para formular quesitos técnicos consistentes ao perito.</p>
+                </div>
+                <div class="dor-card">
+                    <div class="card-icon">✖</div>
+                    <p>Desconfia de prints e capturas de tela, mas não domina os critérios para questionar autenticidade.</p>
+                </div>
+                 <div class="dor-card">
+                    <div class="card-icon">✖</div>
+                    <p>Depende do perito da outra parte para entender o que aconteceu na evidência.</p>
+                </div>
+                <div class="dor-card">
+                    <div class="card-icon">✖</div>
+                    <p>Sente incerteza ao transformar artefatos técnicos em teses (do “EXIF” e do log para o argumento penal).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="solucao">
+        <div class="container">
+            <h2 style="text-align: center;">O Método: Sua Jornada em 3 Módulos</h2>
+            <p style="text-align: center;">Se você se identificou com 1 ou mais itens, a Imersão Prova Digital 360 foi desenhada para você. Do básico ao avançado, com método, modelos e casos reais e práticos. Veja tudo o que você vai aprender.</p>
+
+            <div class="modulos-grid">
+                <div class="modulo-card">
+                    <h4>Módulo 1 — Fundamentos Práticos</h4>
+                    <p>Onde nascem as nulidades; cadeia de custódia na prática (integridade, hash, lacres, registros) e quando pedir espelhamento, bases brutas e metadados.</p>
+                    <strong>Você vai aprender:</strong>
+                    <ul>
+                        <li>O que é prova digital aplicável ao penal.</li>
+                        <li>Cadeia de custódia na prática.</li>
+                        <li>Legalidade da coleta/apreensão.</li>
+                        <li>Mapa de decisões: quando pedir cada tipo de dado.</li>
+                        <li>Como formular pedidos claros e executáveis.</li>
+                    </ul>
+                    <br><strong>Entregáveis:</strong> Checklist de Cadeia de Custódia, Roteiro de Requisições, Modelo de petição.
+                </div>
+                <div class="modulo-card">
+                    <h4>Módulo 2 — Laboratório Técnico</h4>
+                    <p>Leitura de metadados, construção de timelines com logs, autenticidade de prints/capturas, estrutura de laudos e quesitos ao perito que abrem portas.</p>
+                    <strong>Você vai aprender:</strong>
+                    <ul>
+                        <li>Metadados na prática: o que procurar e como interpretar.</li>
+                        <li>Logs e timelines: montar linha do tempo e detectar inconsistências.</li>
+                        <li>Prints & capturas de tela: critérios de autenticidade.</li>
+                        <li>Laudos e relatórios de extração: estrutura e sinais de alerta.</li>
+                        <li>Quesitos ao perito: modelos e lógica.</li>
+                    </ul>
+                    <br><strong>Entregáveis:</strong> Modelo de quesitos técnicos, Checklist de Autenticidade, Template de análise de laudo.
+                </div>
+                <div class="modulo-card">
+                    <h4>Módulo 3 — Estratégia e Audiência</h4>
+                    <p>Do dado à tese (ilicitude, contaminação, cadeia rompida, insuficiência), arquitetura de peças (requerimentos/memoriais/contrarrazões) e roteiro de audiência.</p>
+                    <strong>Você vai aprender:</strong>
+                    <ul>
+                        <li>Como converter metadados/logs em argumentos consistentes.</li>
+                        <li>Teses comuns ligadas à prova digital.</li>
+                        <li>Arquitetura de peças: estrutura-modelo.</li>
+                        <li>Audiência com tema digital: roteiro de perguntas.</li>
+                        <li>Gestão de prazos com checklists.</li>
+                    </ul>
+                    <br><strong>Entregáveis:</strong> Modelo de peça (impugnação), Roteiro de audiência, Matriz de risco.
+                </div>
+            </div>
+
+            <div class="urgency-section" id="inscricao">
+                <a href="#inscricao" class="cta-button">Quero garantir minha vaga</a>
+                <p>Turma Limitada a 10 participantes</p>
+                <p>Inscrições encerram em: [Insira a data de encerramento]</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray" id="professores">
+        <div class="container">
+            <h2>Aprenda com quem vive o campo de batalha</h2>
+            <div class="professores-grid">
+                <div class="professor-card">
+                    <img src="https://via.placeholder.com/180" alt="Foto de Leandro Morales">
+                    <h3>Leandro Morales</h3>
+                    <p>CEO da STWBrasil e Diretor na Academia de Forense Digital (AFD). Atua como Perito Judicial e Assistente Técnico há mais de 10 anos. Professor na Universidade Presbiteriana Mackenzie. Recebeu o Prêmio de Colaborador Emérito do Exército Brasileiro.</p>
+                    <ul>
+                        <li><strong>Obras:</strong> Autor dos livros "Integridades das Provas" e "Dados Ocultos".</li>
+                        <li><strong>Associações:</strong> Membro APEJESP, OPERB, CONPEJ, HTCIA, SBCF, ABCF, APECOF.</li>
+                    </ul>
+                </div>
+                <div class="professor-card">
+                    <img src="https://via.placeholder.com/180" alt="Foto de Renan Cavalheiro">
+                    <h3>Renan Cavalheiro</h3>
+                    <p>Professor em instituições como Mackenzie, FIA e IPOG. Pós-graduado em Cybersecurity e MBA em Segurança da Informação. Premiado “Professor do Ano” (2023) pela SANS Institute na área de perícia digital.</p>
+                    <ul>
+                        <li><strong>Destaques:</strong> Reconhecimento internacional (SANS Institute, 2023).</li>
+                        <li><strong>Certificações:</strong> CTIA, eCPPT, eJPT, GCIH, CEH, ECIH, CHFI, EnCE.</li>
+                    </ul>
+                </div>
+                <div class="professor-card">
+                    <img src="https://via.placeholder.com/180" alt="Foto de Marcelo Nagy">
+                    <h3>Marcelo Nagy</h3>
+                    <p>Diretor Executivo da STWBrasil e CISO na QualiSign S.A. Atua como Diretor e Instrutor na Academia de Forense Digital e professor no Mackenzie. Experiência em cibersegurança e forense de documentos.</p>
+                    <ul>
+                        <li><strong>Destaques:</strong> Liderança na QualiSign e STWBrasil, entrevistas na TV Globo.</li>
+                        <li><strong>Formação:</strong> Pós-graduação em Cyber Security, Prevenção e Investigação de Crimes Digitais.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos">
+        <div class="container">
+            <h2 style="text-align: center;">O que dizem nossos alunos</h2>
+            <div class="testimonial">
+                <img src="https://via.placeholder.com/100" alt="Foto de Dr. Robson">
+                <blockquote>“Antes da imersão, sentia um abismo entre o direito e a tecnologia. Hoje, analiso um laudo com a mesma confiança com que leio uma sentença. A AFD me deu o método que faltava para atuar com segurança.”</blockquote>
+                <cite>Dr. Robson [Sobrenome], Advogado Criminalista</cite>
+            </div>
+            <div class="logos-scroll">
+                <p>Empresas que confiam no nosso trabalho:</p>
+                <div class="logos-placeholder">
+                    [Aqui entrarão os logos dos clientes AFD e STWBrasil]
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="bg-gray" id="entregaveis">
+        <div class="container">
+            <h2 style="text-align: center;">Sua Caixa de Ferramentas para Atuação Técnica</h2>
+            <div class="entregaveis-grid">
+                <div class="entregavel-item">
+                    <img src="https://via.placeholder.com/300x200?text=Livro+Autografado" alt="Livro Integridades das Provas">
+                    <h4>Livro Autografado</h4>
+                    <p>"Integridades das Provas" do professor Leandro Morales.</p>
+                </div>
+                <div class="entregavel-item">
+                    <img src="https://via.placeholder.com/300x200?text=Checklists" alt="Checklists exclusivos">
+                    <h4>Checklists Exclusivos</h4>
+                    <p>Para análise de cadeia de custódia e autenticidade.</p>
+                </div>
+                <div class="entregavel-item">
+                    <img src="https://via.placeholder.com/300x200?text=Certificado" alt="Certificado de participação">
+                    <h4>Certificado AFD</h4>
+                    <p>Com o peso e a autoridade da Academia de Forense Digital.</p>
+                </div>
+                <div class="entregavel-item">
+                    <img src="https://via.placeholder.com/300x200?text=Voucher" alt="Voucher de palestra">
+                    <h4>Voucher de Palestra</h4>
+                    <p>"Blindagem Digital: como proteger seu celular e redes sociais".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bonus">
+        <div class="container">
+            <h2 style="text-align: center;">Bônus e Diferenciais que Garantem sua Segurança</h2>
+            <div class="bonus-grid">
+                <div class="bonus-item">
+                    <h4>Suporte Pós-Curso</h4>
+                    <p>Seu aprendizado não termina com a imersão. Você terá acesso a um canal exclusivo para tirar dúvidas diretamente com os professores por um período definido após o curso.</p>
+                </div>
+                <div class="bonus-item">
+                    <h4>Professores com Reconhecimento Comprovado</h4>
+                    <p>Você não vai aprender com teóricos, mas com peritos e professores premiados, com experiência real e atuação destacada no mercado e no meio acadêmico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta-final bg-gray" id="cta-final">
+        <div class="container" style="text-align: center;">
+            <h2>Pronto para Atuar com Total Segurança em Provas Digitais?</h2>
+            <p>Recapitulando, na imersão você vai aprender a:</p>
+            <ul class="recap-list">
+                <li>Identificar vícios de cadeia de custódia e apontar nulidades com segurança.</li>
+                <li>Pedir exatamente o que importa (bases brutas, metadados, logs, complementações de laudo).</li>
+                <li>Ler e impugnar laudos sem depender do perito adverso.</li>
+                <li>Questionar prints/capturas com critérios técnicos claros.</li>
+                <li>Transformar artefatos técnicos em teses defensivas e atuar com firmeza em audiência.</li>
+            </ul>
+            <a href="#inscricao" class="cta-button">Quero me inscrever agora</a>
+            <p class="disclaimer">*Conteúdo educacional; não constitui aconselhamento para casos específicos nem promessa de resultado.</p>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2 style="text-align: center;">Dúvidas Frequentes</h2>
+            <details class="faq-item">
+                <summary>Onde e quando será a imersão?</summary>
+                <p>A imersão acontecerá em [Insira o Local] nos dias [Insira as Datas].</p>
+            </details>
+            <details class="faq-item">
+                <summary>Tem material impresso?</summary>
+                <p>Sim, você receberá uma apostila impressa com os checklists, modelos e o conteúdo principal dos módulos.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Qual a carga horária do certificado?</summary>
+                <p>O certificado tem carga horária de [Insira a carga horária] horas.</p>
+            </details>
+            <details class="faq-item">
+                <summary>É um curso “de perícia” ou de atuação jurídica?</summary>
+                <p>De atuação jurídica com alfabetização técnica. Você entenderá o suficiente de forense digital para pedir o que importa, ler o que recebe e impugnar com método — sem precisar virar perito.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Quais formatos de evidência são abordados?</summary>
+                <p>Smartphones e mensageria (ex.: WhatsApp), e-mails, logs e mídias (foto/vídeo/áudio), além de dados em nuvem. Trabalhamos com casos reais anonimizados.</p>
+            </details>
+             <details class="faq-item">
+                <summary>Vou receber modelos e checklists?</summary>
+                <p>Sim. Entregamos checklists (cadeia de custódia, autenticidade de capturas), modelos de pedidos/manifestação, roteiro de audiência e modelo de quesitos para peritos.</p>
+            </details>
+        </div>
+    </section>
+
+    <div class="fixed-cta-bar">
+        <p>Vagas limitadas. Garanta a sua!</p>
+        <a href="#inscricao" class="cta-button">Inscreva-se agora</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Imersão Prova Digital 360. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
