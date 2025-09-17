@@ -547,6 +547,75 @@
         opacity: 1; /* Opacidade total */
         transform: scale(1.1); /* Efeito de zoom sutil */
       }
+
+      /* --- Estilos para o Carrossel de Logos --- */
+      .scroller {
+        max-width: 900px; /* Largura máxima do carrossel */
+        margin: auto;
+        overflow: hidden;
+        /* Efeito de máscara para suavizar as bordas */
+        -webkit-mask: linear-gradient(
+          90deg,
+          transparent,
+          white 20%,
+          white 80%,
+          transparent
+        );
+        mask: linear-gradient(
+          90deg,
+          transparent,
+          white 20%,
+          white 80%,
+          transparent
+        );
+      }
+
+      .scroller__inner {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 40px;
+        padding-block: 1rem;
+        width: max-content; /* Essencial para a animação */
+        animation: scroll 30s linear infinite; /* Duração da animação */
+      }
+
+      /* Opcional: para controlar a velocidade via HTML */
+      .scroller[data-speed="fast"] {
+        animation-duration: 20s;
+      }
+
+      .scroller[data-speed="slow"] {
+        animation-duration: 45s;
+      }
+
+      .scroller__inner:hover {
+        animation-play-state: paused; /* Pausa a animação ao passar o mouse */
+      }
+
+      .scroller__inner li {
+        list-style: none; /* Remove bolinhas da lista */
+      }
+
+      .scroller__inner img {
+        max-height: 45px;
+        filter: grayscale(1);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+      }
+
+      .scroller__inner img:hover {
+        filter: grayscale(0);
+        opacity: 1;
+      }
+
+      @keyframes scroll {
+        to {
+          /* Move a lista para a esquerda até a metade do seu conteúdo */
+          transform: translate(
+            calc(-50% - 20px)
+          ); /* Metade da lista - metade do 'gap' */
+        }
+      }
     </style>
   </head>
   <body>
@@ -833,7 +902,7 @@
         <div class="professores-grid">
           <div class="professor-card">
             <img
-              src="image/leandro_morales_stw.webp"
+              src="image/leandro_morales_stw1.png"
               alt="Foto de Leandro Morales"
             />
             <h3>Leandro Morales</h3>
@@ -855,7 +924,10 @@
             </ul>
           </div>
           <div class="professor-card">
-            <img src="image/renan.webp" alt="Foto de Renan Cavalheiro" />
+            <img
+              src="image/ArRenan-Cavalheiro-da-AFD.png"
+              alt="Foto de Renan Cavalheiro"
+            />
             <h3>Renan Cavalheiro</h3>
             <p>
               Professor em instituições como Mackenzie, FIA e IPOG. Pós-graduado
@@ -1075,4 +1147,26 @@
       </p>
     </footer>
   </body>
+  <script>
+    const scrollers = document.querySelectorAll(".scroller");
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      addAnimation();
+    }
+
+    function addAnimation() {
+      scrollers.forEach((scroller) => {
+        scroller.setAttribute("data-animated", true);
+
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
+      });
+    }
+  </script>
 </html>
