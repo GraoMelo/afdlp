@@ -11,6 +11,8 @@
       :root {
         --azul-principal: #3668b1;
         --azul-destaque: #38bff0;
+        --verde-cta: #00b894; /* Nova cor principal dos botões */
+        --verde-cta-hover: #00a383; /* Nova cor para o efeito hover */
         --cinza-texto: #504f4f;
         --cinza-fundo: #ededed;
         --branco: #ffffff;
@@ -67,7 +69,7 @@
 
       .cta-button {
         display: inline-block;
-        background-color: var(--azul-principal);
+        background-color: var(--verde-cta); /* Cor alterada para verde */
         color: var(--branco);
         font-family: var(--fonte-titulo);
         font-size: 1.2rem;
@@ -82,7 +84,9 @@
         cursor: pointer;
       }
       .cta-button:hover {
-        background-color: #2a538c;
+        background-color: var(
+          --verde-cta-hover
+        ); /* Cor alterada para verde mais escuro */
         transform: translateY(-3px);
       }
 
@@ -201,9 +205,10 @@
         width: 28px;
         height: 28px;
       }
+      /* Botão específico do Hero (mantém o estilo único, mas com a nova cor) */
       .hero .cta-button {
-        background-color: var(--azul-destaque);
-        color: var(--cinza-texto);
+        background-color: var(--verde-cta);
+        color: var(--branco); /* Texto branco para melhor contraste */
         font-weight: 700;
         font-size: 1.3rem;
         padding: 18px 40px;
@@ -211,6 +216,7 @@
       }
       .hero .cta-button:hover {
         background-color: var(--branco);
+        color: var(--verde-cta-hover); /* Texto verde no hover */
         transform: translateY(-5px) scale(1.05);
       }
 
@@ -646,6 +652,40 @@
           font-size: 1rem;
         }
       }
+
+      /* --- NOVO: ESTILOS PARA LISTA DE ENTREGÁVEIS NO MÓDULO --- */
+      .entregaveis-modulo {
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 1px solid #e0e0e0; /* Linha sutil para separar */
+      }
+      .entregaveis-modulo strong {
+        color: var(--azul-principal);
+        font-size: 1.1rem;
+      }
+      .entregaveis-modulo ul {
+        margin-top: 10px;
+        list-style: none; /* Remove as bolinhas padrão */
+        padding-left: 0;
+      }
+      .entregaveis-modulo li {
+        position: relative;
+        padding-left: 25px; /* Espaço para o ícone */
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+      }
+      .entregaveis-modulo li::before {
+        content: "✓"; /* Ícone de check */
+        position: absolute;
+        left: 0;
+        top: 2px;
+        color: var(--verde-cta); /* Usa a cor verde do botão */
+        font-weight: bold;
+      }
+      .entregaveis-modulo li strong {
+        color: var(--cinza-texto);
+        font-size: 0.95rem;
+      }
     </style>
   </head>
   <body>
@@ -656,7 +696,6 @@
           alt="Logo da Empresa"
           class="header-logo"
         />
-        <a href="#inscricao" class="cta-button-header">Inscreva-se Agora</a>
       </div>
     </header>
 
@@ -875,22 +914,47 @@
           </p>
           <div class="modulos-grid">
             <div class="modulo-card">
-              <h4>Módulo 1 — Fundamentos Práticos</h4>
+              <h4>Módulo 1 – Fundamentos e Prática da Prova Digital</h4>
               <p>
-                Onde nascem as nulidades; cadeia de custódia na prática
-                (integridade, hash, lacres, registros) e quando pedir
-                espelhamento, bases brutas e metadados.
+                Este módulo apresenta os conceitos essenciais sobre provas
+                digitais, da cena do crime ao tribunal, abordando criminalística
+                digital, cadeia de custódia, normas ISO, nulidades e ferramentas
+                de análise forense.
               </p>
-              <strong>Você vai aprender:</strong>
+              <strong>O que o aluno vai aprender:</strong>
               <ul>
-                <li>O que é prova digital aplicável ao penal.</li>
-                <li>Cadeia de custódia na prática.</li>
-                <li>Legalidade da coleta/apreensão.</li>
-                <li>Mapa de decisões: quando pedir cada tipo de dado.</li>
-                <li>Como formular pedidos claros e executáveis.</li>
+                <li>Diferença entre vestígio, indício, evidência e prova.</li>
+                <li>
+                  Regras da cadeia de custódia digital (art. 158-A a 158-F,
+                  CPP).
+                </li>
+                <li>Princípios da ISO/IEC 27037 e sua aplicação prática.</li>
+                <li>
+                  Como identificar falhas e nulidades em provas digitais
+                  (prints, WhatsApp Web, ausência de hash etc.).
+                </li>
+                <li>Uso de algoritmos de hash na validação de integridade.</li>
+                <li>Estrutura e leitura de arquivos UFDR (exemplo prático).</li>
               </ul>
-              <br /><strong>Entregáveis:</strong> Checklist de Cadeia de
-              Custódia, Roteiro de Requisições, Modelo de petição.
+
+              <div class="entregaveis-modulo">
+                <strong>Entregáveis deste Módulo:</strong>
+                <ul>
+                  <li>
+                    <strong>Tabela de nulidades:</strong> Principais pontos de
+                    impugnação de provas digitais (prints, WhatsApp Web, falhas
+                    de custódia etc.).
+                  </li>
+                  <li>
+                    <strong>Ferramentas de cálculo de hash:</strong> Guia
+                    prático com exemplos de uso de MD5, SHA-1 e SHA-256.
+                  </li>
+                  <li>
+                    <strong>Arquivo UFDR de exemplo:</strong> Material de
+                    exercício para prática de análise forense.
+                  </li>
+                </ul>
+              </div>
             </div>
             <div class="modulo-card">
               <h4>Módulo 2 — Laboratório Técnico</h4>
@@ -942,7 +1006,7 @@
             <a href="#inscricao" class="cta-button"
               >Quero garantir minha vaga</a
             >
-            <p>Turma Limitada a 10 participantes</p>
+            <p>Apenas 16 vagas</p>
             <p>Inscrições encerram em: [Insira a data de encerramento]</p>
           </div>
         </div>
@@ -1107,24 +1171,24 @@
             </div>
             <div class="entregavel-item">
               <img
-                src="https://via.placeholder.com/300x200?text=Checklists"
-                alt="Checklists exclusivos"
+                src="image/checklists.png"
+                alt="Checklists exclusivos para análise forense"
               />
               <h4>Checklists Exclusivos</h4>
               <p>Para análise de cadeia de custódia e autenticidade.</p>
             </div>
             <div class="entregavel-item">
               <img
-                src="https://via.placeholder.com/300x200?text=Certificado"
-                alt="Certificado de participação"
+                src="image/certificado.png"
+                alt="Certificado de participação da Academia de Forense Digital"
               />
               <h4>Certificado AFD</h4>
               <p>Com o peso e a autoridade da Academia de Forense Digital.</p>
             </div>
             <div class="entregavel-item">
               <img
-                src="https://via.placeholder.com/300x200?text=Voucher"
-                alt="Voucher de palestra"
+                src="image/voucher.png"
+                alt="Voucher para a palestra Blindagem Digital"
               />
               <h4>Voucher de Palestra</h4>
               <p>
@@ -1241,7 +1305,7 @@
     </main>
 
     <div class="fixed-cta-bar">
-      <p>Vagas limitadas. Garanta a sua!</p>
+      <p>Apenas 16 vagas</p>
       <a href="#inscricao" class="cta-button">Inscreva-se agora</a>
     </div>
 
