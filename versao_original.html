@@ -69,7 +69,7 @@
 
       .cta-button {
         display: inline-block;
-        background-color: var(--verde-cta);
+        background-color: var(--verde-cta); /* Cor alterada para verde */
         color: var(--branco);
         font-family: var(--fonte-titulo);
         font-size: 1.2rem;
@@ -84,8 +84,9 @@
         cursor: pointer;
       }
       .cta-button:hover {
-        background-color: var(--azul-destaque);
-        color: var(--branco); /* Garantir legibilidade */
+        background-color: var(
+          --verde-cta-hover
+        ); /* Cor alterada para verde mais escuro */
         transform: translateY(-3px);
       }
 
@@ -98,8 +99,9 @@
         z-index: 1001;
         padding: 20px 0;
         background-color: transparent;
-        transition: transform 0.4s ease-out;
+        transition: transform 0.4s ease-out; /* Transição para o movimento de ocultar/mostrar */
       }
+      /* Nova classe que oculta o header */
       .main-header.header-hidden {
         transform: translateY(-100%);
       }
@@ -112,7 +114,8 @@
         align-items: center;
       }
       .header-logo {
-        height: 100px;
+        height: 100px; /* Altura do logo */
+        /* Filtro para deixar o logo branco sobre a imagem do hero */
       }
       .cta-button-header {
         display: inline-block;
@@ -141,7 +144,7 @@
         background-position: center center;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: flex-start; /* Mantém o bloco de conteúdo à esquerda */
       }
       .hero::after {
         content: "";
@@ -166,7 +169,7 @@
       }
       .hero-content {
         max-width: 600px;
-        text-align: left;
+        text-align: left; /* Garante que todo o texto comece à esquerda */
         padding-right: 20px;
       }
       .hero h1 {
@@ -189,6 +192,7 @@
         justify-content: flex-start;
       }
 
+      /* NOVO: Regra para centralizar APENAS o botão e o aviso */
       .cta-wrapper {
         text-align: center;
       }
@@ -207,17 +211,18 @@
         width: 28px;
         height: 28px;
       }
+      /* Botão específico do Hero (mantém o estilo único, mas com a nova cor) */
       .hero .cta-button {
         background-color: var(--verde-cta);
-        color: var(--branco);
+        color: var(--branco); /* Texto branco para melhor contraste */
         font-weight: 700;
         font-size: 1.3rem;
         padding: 18px 40px;
         border-radius: 8px;
       }
       .hero .cta-button:hover {
-        background-color: var(--azul-destaque);
-        color: var(--branco);
+        background-color: var(--branco);
+        color: var(--verde-cta-hover); /* Texto verde no hover */
         transform: translateY(-5px) scale(1.05);
       }
 
@@ -307,11 +312,23 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         margin-bottom: 40px;
       }
+      /* --- SEÇÃO DE PROFESSORES ATUALIZADA --- */
+      .professor-destaque {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        background-color: var(--branco);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        margin-bottom: 40px;
+      }
+      /* Classe para alternar o layout */
       .professor-destaque.reverse {
         flex-direction: row-reverse;
       }
       .professor-imagem {
-        flex: 0 0 250px;
+        flex: 0 0 250px; /* Base fixa para a imagem */
         text-align: center;
       }
       .professor-imagem img {
@@ -324,7 +341,7 @@
         transition: filter 0.4s ease, transform 0.4s ease;
       }
       .professor-destaque:hover .professor-imagem img {
-        filter: grayscale(0%);
+        filter: grayscale(0%); /* Remove o filtro ao passar o mouse no card */
         transform: scale(1.05);
       }
       .professor-info {
@@ -364,6 +381,7 @@
         font-size: 0.8rem;
         top: 6px;
       }
+      /* Ajustes para telas menores */
       @media (max-width: 900px) {
         .professor-destaque,
         .professor-destaque.reverse {
@@ -503,8 +521,7 @@
         box-shadow: none;
       }
       .fixed-cta-bar .cta-button:hover {
-        background-color: var(--azul-destaque);
-        color: var(--branco);
+        background-color: var(--branco);
       }
 
       .logos-scroll {
@@ -537,7 +554,7 @@
       }
       .scroller__inner {
         display: flex;
-        gap: 60px; /* Aumentei o gap para espaçar os logos */
+        gap: 40px;
         padding-block: 1rem;
       }
       .scroller[data-animated="true"] .scroller__inner {
@@ -551,8 +568,8 @@
         align-items: center;
       }
       .scroller__inner img {
-        max-height: 150px; /* Aumentei a altura máxima */
-        max-width: 250px; /* Aumentei a largura máxima */
+        max-height: 60px;
+        max-width: 150px;
         opacity: 0.9;
         transition: all 0.3s ease;
       }
@@ -565,7 +582,7 @@
       }
       @keyframes scroll {
         to {
-          transform: translate(calc(-50% - 30px)); /* Ajustei o translate */
+          transform: translate(calc(-50% - 20px));
         }
       }
 
@@ -640,20 +657,13 @@
         .hero-details p {
           font-size: 1rem;
         }
-        .scroller__inner img {
-          max-height: 60px; /* Ajuste para telas menores */
-          max-width: 120px; /* Ajuste para telas menores */
-        }
-        .scroller__inner {
-          gap: 30px; /* Ajuste do gap para telas menores */
-        }
       }
 
       /* --- NOVO: ESTILOS PARA LISTA DE ENTREGÁVEIS NO MÓDULO --- */
       .entregaveis-modulo {
         margin-top: 20px;
         padding-top: 15px;
-        border-top: 1px solid #e0e0e0;
+        border-top: 1px solid #e0e0e0; /* Linha sutil para separar */
       }
       .entregaveis-modulo strong {
         color: var(--azul-principal);
@@ -661,21 +671,21 @@
       }
       .entregaveis-modulo ul {
         margin-top: 10px;
-        list-style: none;
+        list-style: none; /* Remove as bolinhas padrão */
         padding-left: 0;
       }
       .entregaveis-modulo li {
         position: relative;
-        padding-left: 25px;
+        padding-left: 25px; /* Espaço para o ícone */
         margin-bottom: 8px;
         font-size: 0.95rem;
       }
       .entregaveis-modulo li::before {
-        content: "✓";
+        content: "✓"; /* Ícone de check */
         position: absolute;
         left: 0;
         top: 2px;
-        color: var(--verde-cta);
+        color: var(--verde-cta); /* Usa a cor verde do botão */
         font-weight: bold;
       }
       .entregaveis-modulo li strong {
@@ -687,28 +697,33 @@
       .vagas-info {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        margin-top: 25px;
+        gap: 8px; /* Espaço entre o ícone e o texto */
+        margin-top: 25px; /* Espaço acima do aviso */
         padding: 8px 16px;
-        background-color: rgba(255, 255, 255, 0.15);
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.15
+        ); /* Fundo semitransparente */
         border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50px;
+        border-radius: 50px; /* Formato de pílula */
         color: var(--branco);
         font-size: 1rem;
         font-weight: 500;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px); /* Efeito de vidro para destacar */
         max-width: 100%;
       }
 
       .vagas-info svg {
         width: 20px;
         height: 20px;
-        color: var(--azul-destaque);
+        color: var(--azul-destaque); /* Cor do ícone */
       }
 
       .vagas-info strong {
         font-weight: 700;
-        color: #fff;
+        color: #fff; /* Cor do número em destaque */
       }
     </style>
   </head>
