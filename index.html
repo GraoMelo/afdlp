@@ -12,7 +12,7 @@
         --azul-principal: #3668b1;
         --azul-destaque: #38bff0;
         --verde-cta: #008000; /* Nova cor principal dos botões */
-        --verde-cta-hover: #00573f; /* Nova cor para o efeito hover */
+        --verde-cta-hover: #006400; /* Nova cor para o efeito hover */
         --cinza-texto: #504f4f;
         --cinza-fundo: #ededed;
         --branco: #ffffff;
@@ -175,7 +175,7 @@
       .hero h1 {
         color: var(--branco);
         font-size: 3.8rem;
-        line-height: 1.1;
+        line-height: 1.2;
         margin-bottom: 20px;
       }
       .hero h2 {
@@ -686,6 +686,39 @@
         color: var(--cinza-texto);
         font-size: 0.95rem;
       }
+
+      /* --- NOVO: ESTILO PARA AVISO DE VAGAS --- */
+      .vagas-info {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px; /* Espaço entre o ícone e o texto */
+        margin-top: 25px; /* Espaço acima do aviso */
+        padding: 8px 16px;
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.15
+        ); /* Fundo semitransparente */
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px; /* Formato de pílula */
+        color: var(--branco);
+        font-size: 1rem;
+        font-weight: 500;
+        backdrop-filter: blur(5px); /* Efeito de vidro para destacar */
+        max-width: 100%;
+      }
+
+      .vagas-info svg {
+        width: 20px;
+        height: 20px;
+        color: var(--azul-destaque); /* Cor do ícone */
+      }
+
+      .vagas-info strong {
+        font-weight: 700;
+        color: #fff; /* Cor do número em destaque */
+      }
     </style>
   </head>
   <body>
@@ -703,7 +736,11 @@
       <section class="hero" id="inicio">
         <div class="container">
           <div class="hero-content">
-            <h1>Imersão Prova Digital 360</h1>
+            <h1>
+              <strong>Imersão Provas Digitais:</strong>
+              <br />
+              Da Cena do Crime ao Tribunal
+            </h1>
             <h2>
               Cadeia de custódia, metadados e laudos. Atue com segurança na
               defesa de questões técnicas no processo penal.
@@ -753,6 +790,28 @@
             <a href="#inscricao" class="cta-button"
               >Quero dominar provas digitais</a
             >
+
+            <p class="vagas-info">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-alert-triangle"
+              >
+                <path
+                  d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                ></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              Apenas <strong>16 vagas</strong> para esta turma!
+            </p>
           </div>
         </div>
       </section>
@@ -1303,11 +1362,6 @@
         </div>
       </section>
     </main>
-
-    <div class="fixed-cta-bar">
-      <p>Apenas 16 vagas</p>
-      <a href="#inscricao" class="cta-button">Inscreva-se agora</a>
-    </div>
 
     <footer>
       <p>
